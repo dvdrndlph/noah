@@ -1,0 +1,40 @@
+body, html {
+    height: 100%;
+}
+h2 {
+    color: white;
+    font:24px georgia;
+    font-weight: bold;
+}
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.text-center {
+    background-color: #000;
+    height: 100%;
+}
+#divMain {
+    column-count: 2;
+    column-gap: 10px;
+    display: flex;
+}
+.video-frame {
+    height: 315px;
+    width: 560px;
+}
+.game-frame {
+    background-color:#000; 
+    color:#fff;
+    font:17px georgia;
+    user-select:none;
+}
+#essayBox {
+    background-color:#FFF;
+    color:#000;
+    resize: none;
+    width: 480px;
+    height: 640px;
+    font-family:"Times New Roman", Times, serif;  
+    font-size: 16px; 
+}

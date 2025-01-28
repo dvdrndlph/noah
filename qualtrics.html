@@ -1,0 +1,32 @@
+<head>
+  <!-- <script src='//dvdrndlph.github.io/classic-tetris-js/classic-tetris.js'></script> -->
+  <script src='//dvdrndlph.github.io/classic-tetris-js/classic-tetris.js'></script>
+  <link href="//vjs.zencdn.net/8.21.1/video-js.min.css" rel="stylesheet">
+  <script src="//vjs.zencdn.net/8.21.1/video.min.js"></script>
+  <!-- <link rel="stylesheet" href="//dvdrndlph.github.io/classic-tetris-js/style.css"> -->
+  <link rel="stylesheet" href="//dvdrndlph.github.io/classic-tetris-js/style.css">
+</head>
+<body>
+  <div id="divMain" class="text-center">
+    <div id="videoArea">
+      <h2>Video</h2>
+      <video id="my-player" class="video-js" controls preload="auto" data-setup='{"controls": false, "autoplay": false, "preload": "auto"}'>
+        <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+                type="video/mp4"></source>
+        <p class="vjs-no-js">To view this video please enable JavaScript.</p>
+      </video>
+    </div>
+    <div id="distractionArea">
+      <div class="game-frame">
+        <h2>Game</h2>
+        <canvas id='tetris-canvas' class='canvas' width='520' height='600'></canvas>
+        <div style='padding:0px 30px 15px 30px;'>
+          <label for='level-input'>Start level:</label>
+          <input id='level-input' name='level-input' type='number' min='0' max='19' value='5'></input>
+          <button id='start-stop-btn'>Play/Pause</button>
+          <button id='quit-btn'>Quit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

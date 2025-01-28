@@ -1,0 +1,49 @@
+<head>
+  <!-- <script src='//dvdrndlph.github.io/classic-tetris-js/classic-tetris.js'></script> -->
+  <script src='classic-tetris.js'></script>
+  <link href="//vjs.zencdn.net/8.21.1/video-js.min.css" rel="stylesheet">
+  <script src="//vjs.zencdn.net/8.21.1/video.min.js"></script>
+  <!-- <link rel="stylesheet" href="//dvdrndlph.github.io/classic-tetris-js/style.css"> -->
+  <script>
+    var vidRunning = false; 
+    window.addEventListener('load', event => {
+      const vidPlayer = videojs('my-player');
+      const tetris_canvas = document.getElementById('tetris-canvas');
+      const tetris_game = new ClassicTetris(tetris_canvas);
+      document.getElementById('start-stop-btn').addEventListener('click', event => {
+        tetris_game.setStartLevel(5);
+        tetris_game.togglePlayPause();
+      });
+      document.getElementById('quit-btn').addEventListener('click', event => {
+        tetris_game.quit();
+      }); 
+      vidPlayer.on('ended', function() {
+        console.log("The party is over."); 
+        tetris_game.quit();
+      });
+    });
+  </script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div id="divMain" class="text-center">
+    <div id="videoArea">
+      <h2>Video</h2>
+      <video id="my-player" class="video-js" controls preload="auto" data-setup='{"controls": false, "autoplay": false, "preload": "auto"}'>
+        <source src="https://github.com/dvdrndlph/noah/raw/refs/heads/main/ThesisPod_360p60.mp4"
+                type="video/mp4"></source>
+        <p class="vjs-no-js">To view this video please enable JavaScript.</p>
+      </video>
+    </div>
+    <div id="distractionArea">
+      <div class="game-frame">
+        <h2>Game</h2>
+        <canvas id='tetris-canvas' class='canvas' width='520' height='600'></canvas>
+        <div style='padding:0px 30px 15px 30px;'>
+          <button id='start-stop-btn'>Play</button>
+          <button id='quit-btn'>Quit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
