@@ -41,8 +41,8 @@ h2 {
     background-color:#FFF;
     color:#000;
     resize: none;
-    width: 240px;
-    height: 320px;
-    font-family:sans-serif;  
+    width: 360px;
+    height: 480px;
+    font-family:monospace;  
     font-size: 18px; 
 }
