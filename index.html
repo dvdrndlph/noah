@@ -8,7 +8,7 @@
     var vidRunning = false; 
     window.addEventListener('load', event => {
       const vidPlayer = videojs('my-player', {
-        playbackRates: [0.5, 1, 1.5, 2, 4, 6, 8, 10, 12],
+        playbackRates: [1, 2, 4, 8, 10, 12, 16],
 	      controls: false,
         playsinline: true,
         preload: 'auto',
@@ -24,7 +24,7 @@
         tetris_game.quit();
       });
       vidPlayer.ready(function() {
-        vidPlayer.playbackRate(12);
+        vidPlayer.playbackRate(16);
       }); 
 
       vidPlayer.on('contextmenu', function(e) {
