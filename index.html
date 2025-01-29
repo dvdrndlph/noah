@@ -7,7 +7,13 @@
   <script>
     var vidRunning = false; 
     window.addEventListener('load', event => {
-      const vidPlayer = videojs('my-player');
+      const vidPlayer = videojs('my-player', {
+        playbackRates: [0.5, 1, 1.5, 2, 4, 6, 8, 10, 12],
+	      controls: false,
+        playsinline: true,
+        preload: 'auto',
+	      userActions: {click: false, doubleClick: false, hotKeys: false}
+      });
       const tetris_canvas = document.getElementById('tetris-canvas');
       const tetris_game = new ClassicTetris(tetris_canvas);
       document.getElementById('start-stop-btn').addEventListener('click', event => {
@@ -16,20 +22,36 @@
       });
       document.getElementById('quit-btn').addEventListener('click', event => {
         tetris_game.quit();
+      });
+      vidPlayer.ready(function() {
+        vidPlayer.playbackRate(12);
       }); 
+
+      vidPlayer.on('contextmenu', function(e) {
+        e.preventDefault();
+      });
+
       vidPlayer.on('ended', function() {
         console.log("The party is over."); 
         tetris_game.quit();
+        var videoEndSec = Math.floor(Date.now() / 1000);
+        console.log("videoEndSecond: " + videoEndSec);
+	      console.log("videoStartSecond: " + tetris_game.getStartSecond());
+	      console.log("keyDownCount: " + tetris_game.keyDownCount);
+	      console.log("lineTotal: " + tetris_game.getLineTotal());
+	      console.log("scoreTotal: " + tetris_game.getScoreTotal());
+	      console.log("finalLevel: " + tetris_game.getFinalLevel());
+	      console.log("distractedSeconds: ", tetris_game.getDistractedSeconds());
       });
     });
   </script>
   <link rel="stylesheet" href="./style.css">
 </head>
-<body>
+<body></body>
   <div id="divMain" class="text-center">
     <div id="videoArea">
       <h2>Video</h2>
-      <video id="my-player" class="video-js" controls preload="auto" data-setup='{"controls": false, "autoplay": false, "preload": "auto"}'>
+      <video id="my-player" class="video-js">
         <source src="https://github.com/dvdrndlph/noah/raw/refs/heads/main/ThesisPod_360p60.mp4"
                 type="video/mp4"></source>
         <p class="vjs-no-js">To view this video please enable JavaScript.</p>
@@ -38,6 +60,25 @@
     <div id="distractionArea">
       <div class="game-frame">
         <h2>Game</h2>
+        <div class="instructions"}>
+          <table class="tetris-instructions">
+            <tr>
+			        <td>&uarr;</td>        <td>or <tt>W</tt></td> <td>&nbsp;</td> <td>Rotate</td>
+            </tr>
+            <tr>
+			        <td>&larr;</td>        <td>or <tt>A</tt></td> <td>&nbsp;</td> <td>Left</td>
+            </tr>
+            <tr>
+			        <td>&rarr;</td>        <td>or <tt>D</tt></td> <td>&nbsp;</td> <td>Right</td>
+            </tr>
+            <tr>
+			        <td>&darr;</td>        <td>or <tt>S</tt></td> <td>&nbsp;</td> <td>Down</td>
+            </tr>
+            <tr>
+              <td>&lt;space&gt;</td> <td></td>     <td>&nbsp;</td> <td>Drop</td>
+            </tr>
+           </table>
+        </div>
         <canvas id='tetris-canvas' class='canvas' width='520' height='600'></canvas>
         <div style='padding:0px 30px 15px 30px;'>
           <button id='start-stop-btn'>Play</button>

@@ -6,6 +6,14 @@ h2 {
     font:24px georgia;
     font-weight: bold;
 }
+.tetris-instructions {
+    margin-right: auto;
+    color: white;
+    font-weight: bold;
+    font-family: serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
 .row {
     margin-right: 0px;
     margin-left: 0px;

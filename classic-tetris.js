@@ -256,6 +256,7 @@ class ClassicTetris {
     this.videoPlaying = false;
     this.videoStartSec = 0;
     this.lineTotal = 0;
+    this.scoreTotal = 0;
 
     // game canvas
     this.canvas = canvas;
@@ -1117,8 +1118,20 @@ class ClassicTetris {
     if (this.lineTotal == 0) {
       return this.lines;
     } else {
-      return this.lineTotal + this.lines;
+      return this.lineTotal;
     }
+  }
+
+  getScoreTotal() {
+    if (this.scoreTotal == 0) {
+      return this.score;
+    } else {
+      return this.scoreTotal;
+    }
+  }
+
+  getFinalLevel() {
+    return this.level;
   }
 
   getStartSecond() {
@@ -1134,8 +1147,8 @@ class ClassicTetris {
 
   _triggerGameOver() {
     this.lineTotal += this.lines;
-    this.lines = 0
-    console.log("Game line total: " + this.lines + " Total keys down: " + this.keyDownCount);
+    this.scoreTotal += this.score;
+    console.log("Game line total: " + this.lineTotal + " Total keys down: " + this.keyDownCount);
     // var videoEndSec = Math.floor(Date.now() / 1000);
     // console.log("Video end second: " + videoEndSec)
     this.gameOverLine = 1;

@@ -25,7 +25,7 @@ Qualtrics.SurveyEngine.addOnload(function() {
 	controls: false,
     playsinline: true,
     preload: 'auto',
-	userActions: {click: false, doubleClick: false, hotKeys: false}
+	  userActions: {click: false, doubleClick: false, hotKeys: false}
   });
   const tetris_canvas = document.getElementById('tetris-canvas');
   const tetris_game = new ClassicTetris(tetris_canvas);
